@@ -1,0 +1,191 @@
+openapi: 3.0.0
+info:
+  title: API RamenGo
+  description: API desenvolvida para teste da empresa Red Ventures.
+  version: 1.0.0
+
+servers:
+  - url: http://api.localhost:8080/v1
+    description: Rota do servidor local para testar a api
+tags:
+  - name: broths
+    description: Lista todos os caldos disponíveis. 
+  - name: proteins
+    description: Lista todas as proteínas disponíveis. 
+  - name: orders
+    description: Criar um pedido. 
+paths:
+  /broths:
+    summary: Lista todos os caldos disponíveis.
+    parameters:
+      - in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+          example: x-api-key
+    get:
+      tags:
+        - broths
+      responses:
+        200:
+          description: Uma lista de caldos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Broth' 
+        403:
+          $ref: '#/components/responses/Forbidden'
+
+  /proteins:
+    summary: Lista todas as proteínas disponíveis.
+    parameters:
+      - in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+          example: x-api-key
+    get:
+      tags:
+        - proteins
+      responses:
+        200:
+          description: Um lista de proteínas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Protein' 
+        403:
+          $ref: '#/components/responses/Forbidden'
+            
+  /orders:
+    summary: Criar um pedido.
+    parameters:
+      - in: header
+        name: x-api-key
+        required: true
+        schema:
+          type: string
+          example: x-api-key
+    post:
+      description: Adicionar um novo pedido
+      tags:
+        - orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderRequest'
+      responses:
+        201:
+          description: Pedido realizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        400:
+          description: Requisição inválida
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: both brothId and proteinId are required
+        403:
+          $ref: '#/components/responses/Forbidden'
+        500:
+          description: Erro interno no servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: could not place order
+
+components:
+  responses:
+    Forbidden:
+      description: Proibido
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: x-api-key header ausente
+
+  schemas:
+    Broth:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 1
+        imageInactive:
+          type: string
+          example: https://tech.redventures.com.br/icons/salt/inactive.svg
+        imageActive:
+          type: string
+          example: https://tech.redventures.com.br/icons/salt/active.svg
+        name:
+          type: string
+          example: Sal
+        description:
+          type: string
+          example: Simples como água do mar, nada mais
+        price:
+          type: number
+          example: 10
+    Protein:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 1
+        imageInactive:
+          type: string
+          example: https://tech.redventures.com.br/icons/salt/inactive.svg
+        imageActive:
+          type: string
+          example: https://tech.redventures.com.br/icons/salt/active.svg
+        name:
+          type: string
+          example: Chasu
+        description:
+          type: string
+          example: Uma saborosa carne de porco fatiada com uma seleção de vegetais da estação.
+        price:
+          type: number
+          example: 10
+    OrderRequest:
+      type: object
+      properties:
+        brothId:
+          type: string
+        proteinId:
+          type: string
+    OrderResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 123456
+        description:
+          type: string
+          example: Salt and Chasu Ramen
+        image:
+          type: string
+          example: https://tech.redventures.com.br/icons/ramen/ramenChasu.png
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: 
