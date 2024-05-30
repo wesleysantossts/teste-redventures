@@ -6,17 +6,12 @@ info:
 
 servers:
   - url: http://api.localhost:8080/v1
-    description: Rota do servidor local para testar a api
 tags:
   - name: broths
-    description: Lista todos os caldos disponíveis. 
   - name: proteins
-    description: Lista todas as proteínas disponíveis. 
   - name: orders
-    description: Criar um pedido. 
 paths:
   /broths:
-    summary: Lista todos os caldos disponíveis.
     parameters:
       - in: header
         name: x-api-key
@@ -25,6 +20,7 @@ paths:
           type: string
           example: x-api-key
     get:
+      summary: Lista todos os caldos disponíveis
       tags:
         - broths
       responses:
@@ -38,7 +34,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
 
   /proteins:
-    summary: Lista todas as proteínas disponíveis.
     parameters:
       - in: header
         name: x-api-key
@@ -47,6 +42,7 @@ paths:
           type: string
           example: x-api-key
     get:
+      summary: Lista todas as proteínas disponíveis
       tags:
         - proteins
       responses:
@@ -60,7 +56,6 @@ paths:
           $ref: '#/components/responses/Forbidden'
             
   /orders:
-    summary: Criar um pedido.
     parameters:
       - in: header
         name: x-api-key
@@ -69,6 +64,7 @@ paths:
           type: string
           example: x-api-key
     post:
+      summary: Criar um pedido
       description: Adicionar um novo pedido
       tags:
         - orders
