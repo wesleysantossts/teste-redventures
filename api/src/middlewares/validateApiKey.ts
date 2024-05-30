@@ -1,4 +1,4 @@
-import { ErrorResponse } from "dtos/order.dto";
+import { ErrorResponseDto } from "dtos/order.dto";
 import { NextFunction, Request, Response } from "express";
 
 export default class ValidateApiKeyMiddleware {
@@ -8,7 +8,7 @@ export default class ValidateApiKeyMiddleware {
       if (!key || key !== process.env.API_KEY) throw Error("x-api-key header missing");
       next();
     } catch (error: any) {
-      const errorResponse: ErrorResponse = { error: error.message ?? error };
+      const errorResponse: ErrorResponseDto = { error: error.message ?? error };
       res.status(403).json(errorResponse);
     }
   } 
