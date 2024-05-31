@@ -1,16 +1,18 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
     "target": "es2016",
     "module": "commonjs",
-    "rootDir": "./src",
-    "baseUrl": "./src",
+    "rootDir": "src",
+    "baseUrl": "src",
+    "sourceMap": true,
     "paths": {
-      "@/*": ["./"],
-      "@controllers/*": ["./controllers"],
-      "@dtos/*": ["./dtos"],
-      "@services/*": ["./services"],
-      "@infrastructure/*": ["./infrastructure"],
-      "@repositories/*": ["./repositories"],
+      "@/*": ["./*"],
+      "@controllers/*": ["controllers/*"],
+      "@dtos/*": ["dtos/*"],
+      "@services/*": ["services/*"],
+      "@infrastructure/*": ["infrastructure/*"],
+      "@repositories/*": ["repositories/*"],
     },
     "resolveJsonModule": true,
     "outDir": "./dist",
@@ -19,5 +21,7 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
