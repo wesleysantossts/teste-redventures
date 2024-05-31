@@ -5,7 +5,7 @@ info:
   version: 1.0.0
 
 servers:
-  - url: http://api.localhost:8080/v1
+  - url: http://localhost:8080/v1
 tags:
   - name: broths
   - name: proteins
@@ -20,12 +20,12 @@ paths:
           type: string
           example: x-api-key
     get:
-      summary: Lista todos os caldos disponíveis
+      summary: List all available broths
       tags:
         - broths
       responses:
         200:
-          description: Uma lista de caldos
+          description: A list of broths
           content:
             application/json:
               schema:
@@ -42,12 +42,12 @@ paths:
           type: string
           example: x-api-key
     get:
-      summary: Lista todas as proteínas disponíveis
+      summary: List all available proteins
       tags:
         - proteins
       responses:
         200:
-          description: Um lista de proteínas
+          description: A list of proteins
           content:
             application/json:
               schema:
@@ -64,11 +64,12 @@ paths:
           type: string
           example: x-api-key
     post:
-      summary: Criar um pedido
+      summary: Place an order
       description: Adicionar um novo pedido
       tags:
         - orders
       requestBody:
+        description: Order details
         required: true
         content:
           application/json:
@@ -76,13 +77,13 @@ paths:
               $ref: '#/components/schemas/OrderRequest'
       responses:
         201:
-          description: Pedido realizado com sucesso
+          description: Order placed successfully
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/OrderResponse'
         400:
-          description: Requisição inválida
+          description: Invalid request
           content:
             application/json:
               schema:
@@ -94,7 +95,7 @@ paths:
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          description: Erro interno no servidor
+          description: Internal server error
           content:
             application/json:
               schema:
@@ -107,7 +108,7 @@ paths:
 components:
   responses:
     Forbidden:
-      description: Proibido
+      description: Forbidden
       content:
         application/json:
           schema:
@@ -115,7 +116,7 @@ components:
             properties:
               error:
                 type: string
-                example: x-api-key header ausente
+                example: x-api-key header missing
 
   schemas:
     Broth:
@@ -123,7 +124,7 @@ components:
       properties:
         id:
           type: string
-          example: 1
+          example: "1"
         imageInactive:
           type: string
           example: https://tech.redventures.com.br/icons/salt/inactive.svg
@@ -132,10 +133,10 @@ components:
           example: https://tech.redventures.com.br/icons/salt/active.svg
         name:
           type: string
-          example: Sal
+          example: Salt
         description:
           type: string
-          example: Simples como água do mar, nada mais
+          example: Simple like the seawater, nothing more
         price:
           type: number
           example: 10
@@ -144,7 +145,7 @@ components:
       properties:
         id:
           type: string
-          example: 1
+          example: "1"
         imageInactive:
           type: string
           example: https://tech.redventures.com.br/icons/salt/inactive.svg
@@ -156,7 +157,7 @@ components:
           example: Chasu
         description:
           type: string
-          example: Uma saborosa carne de porco fatiada com uma seleção de vegetais da estação.
+          example: A sliced flavourful pork meat with a selection of season vegetables.
         price:
           type: number
           example: 10
@@ -165,8 +166,10 @@ components:
       properties:
         brothId:
           type: string
+          example: "1"
         proteinId:
           type: string
+          example: "1"
     OrderResponse:
       type: object
       properties:
@@ -184,4 +187,3 @@ components:
       properties:
         error:
           type: string
-          example: 

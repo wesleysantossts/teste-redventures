@@ -1,6 +1,6 @@
-import { Broth } from "dtos/order.dto";
+import { BrothDto } from "dtos/order.dto";
 
-export const BROTHS: Broth[] = [
+export const BROTHS: BrothDto[] = [
   { 
     id: "1", 
     imageInactive: "https://tech.redventures.com.br/icons/salt/inactive.svg", 
@@ -23,7 +23,7 @@ export const BROTHS: Broth[] = [
     imageActive: "https://tech.redventures.com.br/icons/miso/active.svg", 
     name: "Miso", 
     description: "Paste made of fermented soybeans", 
-    price: 10, 
+    price: 12, 
   },
 ];
 
@@ -50,6 +50,12 @@ export const PROTEINS = [
     imageActive: "https://tech.redventures.com.br/icons/salt/active.svg", 
     name: "Karaague", 
     description: "Three units of fried chicken, moyashi, ajitama egg and other vegetables.", 
-    price: 10, 
+    price: 12, 
   },
 ];
+
+export const ORDER_IMAGE = [
+  { type: "chasu", url: "https://interviewtests-wesley.s3.amazonaws.com/redventures/assets/img/ramen/chasu.png" },
+  { type: "yasai vegetarian", url: "https://interviewtests-wesley.s3.amazonaws.com/redventures/assets/img/ramen/yasai.png" },
+  { type: "karaague", url: "https://interviewtests-wesley.s3.amazonaws.com/redventures/assets/img/ramen/karaague.png" },
+]; 
