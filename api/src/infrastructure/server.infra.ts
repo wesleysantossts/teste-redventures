@@ -3,9 +3,8 @@ import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import YAML from "yaml";
 import fs from "fs";
-import path from "path";
-import routes from "routes";
-import ValidateApiKeyMiddleware from "middlewares/validateApiKey";
+import routes from "../routes";
+import ValidateApiKeyMiddleware from "../middlewares/validateApiKey";
 
 export default class Server {
   private readonly server!: express.Express;

@@ -1,6 +1,6 @@
-import { OrderResponseDto } from "dtos/order.dto";
 import { Request, Response } from "express";
-import OrderService from "services/order.service";
+import { OrderResponseDto } from "../dtos/order.dto";
+import OrderService from "../services/order.service";
 
 export default class OrderController {
   static async Store(req: Request, res: Response): Promise<OrderResponseDto | any> {

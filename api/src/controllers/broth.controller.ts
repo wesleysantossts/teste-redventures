@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import BrothService from "services/broth.service";
+import BrothService from "../services/broth.service";
 
 class BrothController {
   static Index(req: Request, res: Response) {

@@ -1,6 +1,6 @@
-import BrothController from "controllers/broth.controller";
-import OrderController from "controllers/order.controller";
-import ProteinController from "controllers/protein.controller";
+import BrothController from "./controllers/broth.controller";
+import OrderController from "./controllers/order.controller";
+import ProteinController from "./controllers/protein.controller";
 import express from "express";
 const routes = express();
 

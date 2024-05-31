@@ -2,10 +2,11 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "dev": "nodemon",
-    "build": "tsc"
+    "build": "tsc --build",
+    "start": "node -r dotenv/config ./dist/app.js"
   },
   "keywords": [],
   "author": "",

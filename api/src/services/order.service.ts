@@ -1,7 +1,7 @@
 import { BROTHS, PROTEINS } from "../constants";
-import { BrothDto, OrderRequestDto, OrderResponseDto, ProteinDto } from "dtos/order.dto";
-import api from "config/axiosConfig";
-import { GetOrderImage } from "utils/order.util";
+import { BrothDto, OrderRequestDto, OrderResponseDto, ProteinDto } from "../dtos/order.dto";
+import api from "../config/axiosConfig";
+import { GetOrderImage } from "../utils/order.util";
 
 export default class OrderService {
   static async Store(payload: OrderRequestDto): Promise<OrderResponseDto> {

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import ProteinService from "services/protein.service";
+import ProteinService from "../services/protein.service";
 
 class ProteinController {
   static Index(req: Request, res: Response) {

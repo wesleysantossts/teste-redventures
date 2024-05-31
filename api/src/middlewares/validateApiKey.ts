@@ -1,4 +1,4 @@
-import { ErrorResponseDto } from "dtos/order.dto";
+import { ErrorResponseDto } from "../dtos/order.dto";
 import { NextFunction, Request, Response } from "express";
 
 export default class ValidateApiKeyMiddleware {
