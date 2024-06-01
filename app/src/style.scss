@@ -15,16 +15,88 @@ html {
 body {
   display: flex;
   flex-direction: column;
+  background-color: #FAFAED;
 }
 
-#banner {
-  @media screen and (max-width: 450px) {
-    padding: 20px 30px;
-    height: 677px;
+#hero {
+  padding: 20px 30px;
+  height: 677px;
+  background-color: red;
+  background-image: url("https://interviewtests-wesley.s3.amazonaws.com/redventures/assets/img/banner/background-pattern.png");
+  background-size: contain;
+
+  .container-logo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+
+    .logo {
+      width: 125px;
+      height: 16px;
+    }
+  }
+
+  .illustration {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+
+    img {
+      width: 265.06px;
+      height: 269px;
+    }
+  }
+
+  .headline {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      font-weight: 900;
+      font-size: 48px;
+      line-height: 56px;
+      text-align: center;
+      color: #FFC024;
+      margin-bottom: 11px;
+    }
+
+    h1 {
+      font-weight: 900;
+      font-size: 120px;
+      line-height: 100px;
+      text-align: center;
+      color: #FAFAED;
+      margin-bottom: 24px;
+    }
+    
+    p {
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+      color: #FFFFFF;
+    }
+  }
+
+  .btn {
+    display: none;
+  }
+
+  @media screen and (min-width: 600px) {
+    padding: 20px 40px;
+    height: 768px;
     background-color: red;
     background-image: url("https://interviewtests-wesley.s3.amazonaws.com/redventures/assets/img/banner/background-pattern.png");
     background-size: contain;
-
+  
     .container-logo {
       width: 100%;
       display: flex;
@@ -32,23 +104,26 @@ body {
       justify-content: center;
       align-items: center;
       margin-bottom: 24px;
-
+  
       .logo {
-        width: 125px;
-        height: 16px;
+        position: absolute;
+        left: 24px;
+        top: 24px;
+        width: 124.69px;
+        height: 15.67px;
       }
     }
-
+    
     .illustration {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       margin-bottom: 12px;
-
+  
       img {
-        width: 265.06px;
-        height: 269px;
+        width: 673px;
+        height: 683px;
       }
     }
 
@@ -58,8 +133,15 @@ body {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-
+  
       h2 {
+        position: absolute;
+        left: 264px;
+        top: 156px;
+        writing-mode: vertical-lr;
+        z-index: 10;
+        height: 224px;
+        width: 48px;
         font-weight: 900;
         font-size: 48px;
         line-height: 56px;
@@ -67,10 +149,14 @@ body {
         color: #FFC024;
         margin-bottom: 11px;
       }
-
+  
       h1 {
+        z-index: 10;
+        position: absolute;
+        left: 320px;
+        top: 280px;
         font-weight: 900;
-        font-size: 120px;
+        font-size: 160px;
         line-height: 100px;
         text-align: center;
         color: #FAFAED;
@@ -78,11 +164,45 @@ body {
       }
       
       p {
+        z-index: 10;
+        position: absolute;
+        left: 273px;
+        top: 404px;
+        width: 201px;
         font-weight: normal;
         font-size: 16px;
         line-height: 20px;
-        text-align: center;
+        text-align: left;
         color: #FFFFFF;
+      }
+    }
+
+    .btn {
+      display: flex;
+      z-index: 10;
+      position: absolute;
+      left: 273px;
+      top: 552px;
+
+      button {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border: none;
+        width: 213px;
+        height: 60px;
+        background-color: #1820EF;
+        border-radius: 50px;
+        color: #FFFFFF;
+        font-weight: 800;
+        font-size: 14px;
+        line-height: 20.79px;
+        letter-spacing: 1.78px;
+
+        span {
+          font-size: 28px;
+          color: #FFC024;
+        }
       }
     }
   }
