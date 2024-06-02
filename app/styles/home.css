@@ -246,7 +246,7 @@ body {
     width: 100%;
     padding: 10px 0;
 
-    .slide {
+    .slide-broth, .slide-protein {
       flex: none;
       width: 288px;
       height: 316px;
