@@ -68,6 +68,43 @@ header {
   }
 
   @media screen and (min-width: 650px) {
-    display: none;   
+    height: 100vh;
+    width: 50%;
+
+    .container-logo {
+      width: 50%;
+      position: absolute;
+      left: 40px;
+      top: 40px;
+      justify-content: start;
+      align-items: center;
+
+      img {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        width: 124.69px;
+        height: 15.67px;
+      }
+    }
+
+    .headline {
+      width: 100%;
+
+      img {
+        width: 50%;
+        height: auto;
+      }
+
+      h1 {
+        font-size: 32px;
+        line-height: 47.52px;
+      }
+
+      p {
+        font-size: 20px;
+        line-height: 24px;
+      }
+    }
   }
 }
