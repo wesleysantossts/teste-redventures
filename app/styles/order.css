@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  text-align: center;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #FAFAED;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  align-items: center;
+  width: 100%;
+  height: 677px;
+  background-image: url("https://interviewtests-wesley.s3.amazonaws.com/redventures/assets/img/banner/background-pattern-blue.png");
+  background-size: contain;
+
+  .container-logo {
+    position: absolute;
+    width: 100%;
+    top: 20px;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .headline {
+    width: 270px;
+    
+    img {
+      width: 100%;
+      height: auto;
+
+      .invisible {
+        display: none;
+      }
+    }
+
+    h1 {
+      font-weight: 900;
+      font-size: 24px;
+      line-height: 32px;
+      color: #FFC024;
+    }
+    
+    p {
+      font-weight: 900;
+      font-size: 24px;
+      line-height: 32px;
+      color: #FFF;
+      margin-bottom: 16px;
+    }
+  }
+
+  @media screen and (min-width: 650px) {
+    display: none;   
+  }
+}

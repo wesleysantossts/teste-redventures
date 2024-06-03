@@ -22,6 +22,18 @@ const getProteins = async () => {
   return response;
 }
 
+const createOrder = async (id) => {
+  const response = await fetch("http://localhost:8080/api/orders", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": "PSf@d39m[-8s9:m%x]NA({xG<Og(ur"
+    }
+  });
+
+  return response;
+}
+
 const changeStyle = ({component, selector, attribute, value}) => {
   component.querySelectorAll(selector).forEach(item => item.style[attribute] = value);
 }
@@ -46,7 +58,9 @@ const handleClick = async (selector, counter) => {
           }
         });
       }
-      
+
+      const mealSelected = box.querySelector(".slide-content > p.title").textContent;
+      console.log("🚀 ~ box.addEventListener ~ mealSelected:", mealSelected)
       box.querySelectorAll(".icon").forEach((item, index) => {
         if (index === 0) item.style.display = "none";
         if (index === 1) {
