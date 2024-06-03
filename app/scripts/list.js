@@ -22,6 +22,72 @@ const getProteins = async () => {
   return response;
 }
 
+const changeStyle = ({component, selector, attribute, value}) => {
+  component.querySelectorAll(selector).forEach(item => item.style[attribute] = value);
+}
+
+const handleClick = async (selector, counter) => {
+  const colorBoxes = document.querySelectorAll(selector);
+  let lastClickedBox = null;
+  
+  colorBoxes.forEach(box => {
+    box.addEventListener('click', function() {
+      if (lastClickedBox) {
+        lastClickedBox.style.backgroundColor = "#FAFAED";
+
+        changeStyle({ component: lastClickedBox, selector: ".title", attribute: "color", value: "#1820EF" });
+        changeStyle({ component: lastClickedBox, selector: ".description", attribute: "color", value: "black" });
+        changeStyle({ component: lastClickedBox, selector: ".price", attribute: "color", value: "#FF4E42" });
+        lastClickedBox.querySelectorAll(".icon").forEach((item, index) => {
+          if (index === 0) item.style.display = "flex";
+          if (index === 1) {
+            item.style.display = "none";
+            item.classList.toggle("selected");
+          }
+        });
+      }
+      
+      box.querySelectorAll(".icon").forEach((item, index) => {
+        if (index === 0) item.style.display = "none";
+        if (index === 1) {
+          item.style.display = "flex";
+          item.classList.toggle("selected");
+
+          if (selector === ".slide-broth") 
+            counter.broth = 1;
+          else
+            counter.protein = 1;
+        }
+      });
+      box.dataset.originalColor = box.style.backgroundColor;
+      box.style.backgroundColor = '#1820EF';
+      changeStyle({ component: box, selector: ".title", attribute: "color", value: "#FFF" });
+      changeStyle({ component: box, selector: ".description", attribute: "color", value: "#FFF" });
+      changeStyle({ component: box, selector: ".price", attribute: "color", value: "#FFC024" });
+      lastClickedBox = box;
+
+      if (
+        counter.broth === 1 &&
+        counter.protein === 1
+      ) {
+        const button = document.querySelector(".make-order");
+        button.removeAttribute("disabled");
+        button.style.background = "#1820EF";
+
+        button.addEventListener("click", function () {
+          window.location.href = "order.html";
+        })
+      }
+    });
+  });
+}
+
+const eventChangeColor = async () => {
+  const counter = { broth: null, protein: null };
+  handleClick('.slide-broth', counter);
+  handleClick('.slide-protein', counter);
+}
+
 const createCard = async (type) => {
   if (!type) return;
   
@@ -104,51 +170,7 @@ const createCard = async (type) => {
 const eventListener = async () => {
   createCard("broth");
   createCard("protein");
-  eventChangeColor();
 }
-
-const changeStyle = ({component, selector, attribute, value}) => {
-  component.querySelectorAll(selector).forEach(item => item.style[attribute] = value);
-}
-
-const handleClick = async (selector) => {
-  const colorBoxes = document.querySelectorAll(selector);
-  const imgSelector = document.querySelectorAll("img.icon");
-  let lastClickedBox = null;
-
-  colorBoxes.forEach(box => {
-    box.addEventListener('click', function() {
-      if (lastClickedBox) {
-        lastClickedBox.style.backgroundColor = "#FAFAED";
-        changeStyle({ component: lastClickedBox, selector: ".title", attribute: "color", value: "#1820EF" });
-        changeStyle({ component: lastClickedBox, selector: ".description", attribute: "color", value: "black" });
-        changeStyle({ component: lastClickedBox, selector: ".price", attribute: "color", value: "#FF4E42" });
-        lastClickedBox.querySelectorAll(".icon").forEach((item, index) => {
-          if (index === 0) item.style.display = "flex";
-          if (index === 1) item.style.display = "none";
-        });
-      }
-      
-      box.querySelectorAll(".icon").forEach((item, index) => {
-        if (index === 0) item.style.display = "none";
-        if (index === 1) item.style.display = "flex";
-      });
-      box.dataset.originalColor = box.style.backgroundColor;
-      box.style.backgroundColor = '#1820EF';
-      lastClickedBox = box;
-      
-      changeStyle({ component: box, selector: ".title", attribute: "color", value: "#FFF" });
-      changeStyle({ component: box, selector: ".description", attribute: "color", value: "#FFF" });
-      changeStyle({ component: box, selector: ".price", attribute: "color", value: "#FFC024" });
-    });
-  });
-}
-
-const eventChangeColor = async () => {
-  handleClick('.slide-broth');
-  handleClick('.slide-protein');
-}
-
 
 window.addEventListener('DOMContentLoaded', () => {
   eventListener();
