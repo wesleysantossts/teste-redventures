@@ -8,9 +8,11 @@
   <title>RamenGO</title>
 </head>
 <body>
-  <header id="hero">
+  <header>
     <div class="container-logo">
-      <img class="logo" src="https://interviewtests-wesley.s3.amazonaws.com/redventures/assets/img/banner/logo.png" />
+      <a href="/">
+        <img class="logo" src="https://interviewtests-wesley.s3.amazonaws.com/redventures/assets/img/banner/logo.png" />
+      </a>
     </div>
     <div class="illustration">
       <img class="logo" src="https://interviewtests-wesley.s3.amazonaws.com/redventures/assets/img/banner/illustration.png" />
@@ -21,10 +23,10 @@
       <p>Enjoy a good ramen in the comfort of your house. Create your own ramen and choose your favorite flavour combination!</p>
     </div>
     <div class="btn">
-      <button>ORDER NOW <span>→</span></button>
+      <button onClick="window.location.href = '#select-meal'">ORDER NOW <span>→</span></button>
     </div>
   </header>
-  <main>
+  <main id="select-meal">
     <div class="slider-text">
       <h3>First things first: select your favorite broth.</h3>
       <p>It will give the whole flavor on your ramen soup.</p>
