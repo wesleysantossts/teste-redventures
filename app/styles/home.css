@@ -18,12 +18,31 @@ body {
   background-color: #FAFAED;
 }
 
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: red; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
+
 #hero {
   padding: 20px 30px;
   height: 677px;
   background-color: red;
   background-image: url("https://interviewtests-wesley.s3.amazonaws.com/redventures/assets/img/banner/background-pattern.png");
   background-size: contain;
+  margin-bottom: 40px;
 
   .container-logo {
     width: 100%;
@@ -136,8 +155,8 @@ body {
   
       h2 {
         position: absolute;
-        left: 264px;
-        top: 156px;
+        left: 680px;
+        top: 166px;
         writing-mode: vertical-lr;
         z-index: 10;
         height: 224px;
@@ -153,7 +172,7 @@ body {
       h1 {
         z-index: 10;
         position: absolute;
-        left: 320px;
+        left: 738px;
         top: 280px;
         font-weight: 900;
         font-size: 160px;
@@ -166,7 +185,7 @@ body {
       p {
         z-index: 10;
         position: absolute;
-        left: 273px;
+        left: 690px;
         top: 404px;
         width: 201px;
         font-weight: normal;
@@ -181,7 +200,7 @@ body {
       display: flex;
       z-index: 10;
       position: absolute;
-      left: 273px;
+      left: -400px;
       top: 552px;
 
       button {
@@ -204,6 +223,109 @@ body {
           color: #FFC024;
         }
       }
+    }
+  }
+}
+
+
+.slider-text {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 0 30px;
+  text-align: center;
+
+  h3 {
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 31px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 32px;
+  }
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 48px;
+
+  .slider-container {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* For smooth scrolling */
+    width: 100%;
+    padding: 10px 0;
+
+    .slide-broth, .slide-protein {
+      flex: none;
+      width: 288px;
+      height: 316px;
+      background-color: #FAFAED;
+      border-radius: 15px;
+      box-shadow: #E0DBBF99 0 4px 12px 0;
+      scroll-snap-align: start;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      color: black;
+      margin: 0 16px 0 0;
+    }
+
+    .slide:first-child {
+      margin-left: 30px;
+    }
+    
+    .slide:last-child {
+      margin-right: 30px;
+    }
+  }
+
+
+  @media screen and (min-width: 600px) {
+    .slider-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.btn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  margin-bottom: 38px;
+  
+  button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: none;
+    width: 213px;
+    height: 60px;
+    background-color: #C5C5C5;
+    border-radius: 50px;
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 20.79px;
+    letter-spacing: 1.78px;
+    cursor: pointer;
+
+    span {
+      font-size: 28px;
+      color: #FFFFFF;
     }
   }
 }

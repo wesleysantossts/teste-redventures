@@ -24,9 +24,9 @@ export default class Server {
   middlewares(): void {
     this.server.use(
       this.basePathApi, 
-      cors(), 
       express.json(), 
       express.urlencoded({ extended: true }),
+      cors(), 
     );
 
     const file = fs.readFileSync("./swagger.yml", "utf-8");
