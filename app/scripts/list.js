@@ -88,7 +88,13 @@ const handleClick = async (selector, counter) => {
         button.style.background = "#1820EF";
 
         button.addEventListener("click", function () {
-          window.location.href = "order.html";
+          const payload = {
+            broth: "teste broth",
+            protein: "teste protein"
+          }
+          const params = new URLSearchParams(payload).toString();
+
+          window.location.href = `order.html?${params}`;
         })
       }
     });
