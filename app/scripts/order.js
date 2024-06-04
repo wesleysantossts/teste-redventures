@@ -7,8 +7,12 @@ class EventListener {
   static changeMeal() {
     const query = window.location.search;
     const params = new URLSearchParams(query);
-    const broth = params.get("broth");
-    const protein = params.get("protein");
+    let broth = params.get("broth");
+    let protein = params.get("protein");
+
+    if (protein.includes("yasai"))
+      protein = protein.split(" ").map(item => item.charAt(0).toUpperCase() + item.slice(1, item.length)).join(" ");
+
     const payload = {
       broth: 
         broth.charAt(0).toUpperCase() + broth.slice(1, broth.length),
@@ -17,7 +21,7 @@ class EventListener {
     }
 
     const headline = document.querySelector(".headline");
-    const imgSelected = headline.querySelector(`.${protein.toLocaleLowerCase()}`);
+    const imgSelected = headline.querySelector(`.${protein.split(" ")[0].toLocaleLowerCase()}`);
     imgSelected.classList.toggle("invisible");
 
     const title = headline.querySelector("h1");
