@@ -38,7 +38,7 @@ const changeStyle = ({component, selector, attribute, value}) => {
   component.querySelectorAll(selector).forEach(item => item.style[attribute] = value);
 }
 
-const handleClick = async (selector, counter) => {
+const handleClick = async (selector, meal) => {
   const colorBoxes = document.querySelectorAll(selector);
   let lastClickedBox = null;
   
@@ -67,9 +67,9 @@ const handleClick = async (selector, counter) => {
           item.classList.toggle("selected");
 
           if (selector === ".slide-broth") 
-            counter.broth = 1;
+            meal.broth = String(mealSelected).toLowerCase();
           else
-            counter.protein = 1;
+            meal.protein = String(mealSelected).toLowerCase();
         }
       });
       box.dataset.originalColor = box.style.backgroundColor;
@@ -80,21 +80,17 @@ const handleClick = async (selector, counter) => {
       lastClickedBox = box;
 
       if (
-        counter.broth === 1 &&
-        counter.protein === 1
+        !!meal.broth &&
+        !!meal.protein
       ) {
         const button = document.querySelector(".make-order");
         button.removeAttribute("disabled");
         button.style.background = "#1820EF";
 
         button.addEventListener("click", function () {
-          const payload = {
-            broth: "teste broth",
-            protein: "teste protein"
-          }
-          const params = new URLSearchParams(payload).toString();
-
-          window.location.href = `order.html?${params}`;
+          const params = new URLSearchParams(meal).toString();
+          const url = `/order.html?${params}`
+          window.location.href = url;
         })
       }
     });
@@ -102,9 +98,9 @@ const handleClick = async (selector, counter) => {
 }
 
 const eventChangeColor = async () => {
-  const counter = { broth: null, protein: null };
-  handleClick('.slide-broth', counter);
-  handleClick('.slide-protein', counter);
+  const meal = { broth: null, protein: null };
+  handleClick('.slide-broth', meal);
+  handleClick('.slide-protein', meal);
 }
 
 const createCard = async (type) => {

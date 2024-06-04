@@ -46,10 +46,10 @@ header {
     img {
       width: 100%;
       height: auto;
+    }
 
-      .invisible {
-        display: none;
-      }
+    .invisible {
+      display: none;
     }
 
     h1 {
