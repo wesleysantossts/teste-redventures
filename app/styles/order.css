@@ -41,7 +41,6 @@ header {
   }
 
   .headline {
-    /* width: 270px; */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -102,7 +101,7 @@ header {
     .headline {
       width: 100%;
 
-      img {
+      img, .yasai, .chasu {
         width: 354px;
         height: auto;
       }
