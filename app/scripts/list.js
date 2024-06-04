@@ -60,7 +60,6 @@ const handleClick = async (selector, counter) => {
       }
 
       const mealSelected = box.querySelector(".slide-content > p.title").textContent;
-      console.log("🚀 ~ box.addEventListener ~ mealSelected:", mealSelected)
       box.querySelectorAll(".icon").forEach((item, index) => {
         if (index === 0) item.style.display = "none";
         if (index === 1) {
