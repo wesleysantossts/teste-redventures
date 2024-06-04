@@ -22,13 +22,14 @@ const getProteins = async () => {
   return response;
 }
 
-const createOrder = async (id) => {
+const createOrder = async (payload) => {
   const response = await fetch("http://localhost:8080/api/orders", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "x-api-key": "PSf@d39m[-8s9:m%x]NA({xG<Og(ur"
-    }
+    },
+    body: JSON.stringify(payload)
   });
 
   return response;
@@ -87,8 +88,17 @@ const handleClick = async (selector, meal) => {
         button.removeAttribute("disabled");
         button.style.background = "#1820EF";
 
-        button.addEventListener("click", function () {
-          const params = new URLSearchParams(meal).toString();
+        button.addEventListener("click", async function () {
+          const broths = await (await getBroths()).json();
+          const proteins = await (await getProteins()).json();
+          const payload = {
+            brothId: broths.filter(item => String(item.name.toLowerCase()) === meal.broth)[0].id,
+            proteinId: proteins.filter(item => String(item.name.toLowerCase()) === meal.protein)[0].id,
+          }
+          
+          const response = await (await createOrder(payload)).json();
+
+          const params = new URLSearchParams({...meal, orderId: response.id}).toString();
           const url = `/order.html?${params}`
           window.location.href = url;
         })
