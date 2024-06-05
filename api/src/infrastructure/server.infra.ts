@@ -22,11 +22,24 @@ export default class Server {
   }
   
   middlewares(): void {
+    const allowedOrigin = 'http://3.83.94.172/';
+    const corsOptions = {
+      origin: function (origin: string, callback: any) {
+        if (origin === allowedOrigin || !origin) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+      }
+    };
+
     this.server.use(
       this.basePathApi, 
       express.json(), 
       express.urlencoded({ extended: true }),
-      cors(), 
+      cors({
+
+      }), 
     );
 
     const file = fs.readFileSync("./swagger.yml", "utf-8");
