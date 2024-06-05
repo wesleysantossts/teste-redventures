@@ -3,10 +3,10 @@ services:
     build: ./app
     container_name: apprv
     restart: unless-stopped
-    depends_on:
-      - api
     ports:
       - 8000:8000
+    depends_on:
+      - api
     networks:
       - red-ventures
   
@@ -16,20 +16,6 @@ services:
     restart: unless-stopped
     ports:
       - 8080:8080
-    networks:
-      - red-ventures
-
-  proxy:
-    image: nginx
-    build: ./api/proxy
-    depends_on:
-      - api
-      - app
-    container_name: nginx
-    restart: unless-stopped
-    ports:
-      - 443:443
-      - 80:80
     networks:
       - red-ventures
 
