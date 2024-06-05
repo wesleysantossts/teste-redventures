@@ -22,7 +22,7 @@ export default class Server {
   }
   
   middlewares(): void {
-    const allowedOrigin = 'http://3.83.94.172/';
+    const allowedOrigin = process.env.ENVIRONMENT === "dev" ? "http://localhost" : "http://3.83.94.172/";
     const corsOptions = {
       origin: function (origin: string, callback: any) {
         if (origin === allowedOrigin || !origin) {
