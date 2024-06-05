@@ -19,5 +19,19 @@ services:
     networks:
       - red-ventures
 
+  proxy:
+    image: nginx
+    build: ./api/nginx
+    depends_on:
+      - app
+      - api
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - 443:443
+      - 80:80
+    networks:
+      - red-ventures
+
 networks:
   red-ventures:
