@@ -21,7 +21,7 @@ services:
 
   proxy:
     image: nginx
-    build: ./api/nginx
+    build: ./api/proxy
     depends_on:
       - app
       - api
