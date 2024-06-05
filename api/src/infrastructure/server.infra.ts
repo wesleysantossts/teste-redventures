@@ -23,7 +23,7 @@ export default class Server {
   
   middlewares(): void {
     const allowedOrigin = process.env.ENVIRONMENT === "dev" ? "http://localhost" : "http://3.83.94.172/";
-    const corsOptions = {
+    const corsOptions: any = {
       origin: function (origin: string, callback: any) {
         if (origin === allowedOrigin || !origin) {
           callback(null, true);
@@ -37,9 +37,7 @@ export default class Server {
       this.basePathApi, 
       express.json(), 
       express.urlencoded({ extended: true }),
-      cors({
-
-      }), 
+      cors(corsOptions), 
     );
 
     const file = fs.readFileSync("./swagger.yml", "utf-8");
