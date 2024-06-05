@@ -1,6 +1,6 @@
 class Meal {
   static async getBroths() {
-    const response = await fetch("http://localhost:8080/api/broths", {
+    const response = await fetch("http://3.83.94.172:8080/api/broths", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -12,7 +12,7 @@ class Meal {
   }
   
   static async getProteins() {
-    const response = await fetch("http://localhost:8080/api/proteins", {
+    const response = await fetch("http://3.83.94.172:8080/api/proteins", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +24,7 @@ class Meal {
   }
   
   static async createOrder(payload) {
-    const response = await fetch("http://localhost:8080/api/orders", {
+    const response = await fetch("http://3.83.94.172:8080/api/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
